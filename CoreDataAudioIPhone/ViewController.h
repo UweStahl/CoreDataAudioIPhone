@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<NSFetchedResultsControllerDelegate,UIPickerViewDelegate,
+UIPickerViewDataSource>
+
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSArray *onlyAudioFiles;
+@property (strong, nonatomic) IBOutlet UIPickerView *audioFileList;
+
+-(NSData *)getAudioBinary:(NSString *)fileName;
+-(void)insertNewManagedObject:(NSString *)fileName;
+
 
 @end
